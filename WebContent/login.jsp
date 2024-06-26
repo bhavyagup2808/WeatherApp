@@ -23,15 +23,15 @@
 	              	String errorMessage=(String)request.getAttribute("errorMessage");
 	              	if(errorMessage != null){
 	              		%>
-	              		<p style="color:#ffffff;"><%= errorMessage %> </p>
+	              		<p class="error-message">*<%= errorMessage %> </p>
 	              	<% } %>
 	                     
 		          <div class="login-attribute1">
-		            <input class="login-placeholder1" placeholder="Username" type="text" />
+		            <input class="login-placeholder1" placeholder="Username" type="text" name="username" />
 		            <div class="inner-line"></div>
 		          </div>
 	            <div class="login-attribute1">
-	              <input class="login-placeholder1" placeholder="Password" type="text" />
+	              <input class="login-placeholder1" placeholder="Password" type="text" name="password" />
 	              <div class="inner-line"></div>
 	            </div>
 	          <input type="Submit" class="submit-button" value="Login">

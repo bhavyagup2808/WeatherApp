@@ -1,0 +1,9 @@
+
+<Context>
+  <Resource name="jdbc/weather_app" 
+  			auth="Container" type="javax.sql.DataSource"
+               maxActive="20" maxIdle="5" maxWait="10000"
+               username="weatherapp" password="weatherapp" 
+               driverClassName="com.mysql.cj.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/weather_app"/>
+</Context>
