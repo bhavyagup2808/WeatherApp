@@ -53,27 +53,6 @@ public class AppDBUtil {
         }
         return result;
     }
-
-    public boolean isValidPassword(String password) throws SQLException {
-        Connection myConn = null;
-        PreparedStatement mystm = null;
-        ResultSet myrs = null;
-        boolean result = false;
-        try {
-            myConn = dataSource.getConnection();
-            String sql = "SELECT * FROM userdetails WHERE user_password = ?";
-            mystm = myConn.prepareStatement(sql);
-            mystm.setString(1, password);
-            myrs = mystm.executeQuery();
-            if (myrs.next()) {
-                result = true;
-            }
-        } finally {
-            close(myConn, mystm, myrs);
-        }
-        return result;
-    }
-
     private void close(Connection myConn, PreparedStatement myStm, ResultSet myrs) {
         try {
             if (myrs != null) {

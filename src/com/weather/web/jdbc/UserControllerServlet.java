@@ -46,9 +46,10 @@ public class UserControllerServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         if (appDBUtil.isValidUser(username, password)) {
-            request.getRequestDispatcher("/welcome.jsp").forward(request, response); 
-        } else if (appDBUtil.isValidUsername(username) || appDBUtil.isValidPassword(password)) {
-            request.setAttribute("errorMessage", "Invalid username or password. Please try again.");
+        	request.setAttribute("username",username);
+            request.getRequestDispatcher("/").forward(request, response); 
+        } else if (appDBUtil.isValidUsername(username)) {
+            request.setAttribute("errorMessage", "Invalid password. Please try again.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
         } else {
