@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,6 +51,12 @@
     >33
     <sup>o</sup>
   </span>
-  <div class="already-in-your">Already in Your List</div>   
+  <div class="already-in-your">Already in Your List</div> 
+
+  <% 
+  List<String> citylist =(List<String>) request.getAttribute("User_City_List");
+  for (String tempCity : citylist) { %>
+						<h2> <%= tempCity%> </h2>
+<% } %>
   </body>
 </html>

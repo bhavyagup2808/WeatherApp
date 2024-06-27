@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,9 @@ import javax.sql.DataSource;
 @WebServlet("/Update")
 public class Update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+    @Resource(name="jdbc/weather_app")	
 	private CityDBUtil cityDBUtil;
+
 	private DataSource dataSource;
 
     public void init() throws ServletException {
@@ -29,17 +31,21 @@ public class Update extends HttpServlet {
         }
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		String username= request.getParameter("username");
-		List<String> citylist = null;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		try {
-			citylist = cityDBUtil.getCity(username);
-		} catch (SQLException e) {
+			getList(request,response);
+		}catch (ServletException | IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		String username= request.getParameter("username");
+		List<String> citylist= cityDBUtil.getCity(username);
 		request.setAttribute("User_City_List",citylist);
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/Updates.jsp");
+		RequestDispatcher dispatcher=request.getRequestDispatcher("/updates.jsp");
 		dispatcher.forward(request,response);
 	}
 

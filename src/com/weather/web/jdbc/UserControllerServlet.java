@@ -47,7 +47,7 @@ public class UserControllerServlet extends HttpServlet {
 
         if (appDBUtil.isValidUser(username, password)) {
         	request.setAttribute("username",username);
-            request.getRequestDispatcher("/").forward(request, response); 
+            request.getRequestDispatcher("/Update").forward(request, response); 
         } else if (appDBUtil.isValidUsername(username)) {
             request.setAttribute("errorMessage", "Invalid password. Please try again.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
