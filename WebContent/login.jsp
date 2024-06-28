@@ -15,10 +15,9 @@
               <h2 class="tagline">Your Personal Weather Guide</h2> 
           </div>
           <div>
-	          <form class="login-form" action="UserControllerServlet" method="POST">
+	          <form class="login-form" action="Login" method="POST">
 	              <h2 class="login-form-heading">Login</h2>
 	              <h3 class="tagline1">Keep Updates Your Favorite City</h3>
-	              <input type="hidden" name="command" value="LOGIN" />
 	              <%
 	              	String errorMessage=(String)request.getAttribute("errorMessage");
 	              	if(errorMessage != null){

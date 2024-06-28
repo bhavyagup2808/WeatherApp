@@ -1,4 +1,8 @@
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*,com.weather.web.jdbc.*" %>
+<%
+    List<String> citylist = (List<String>) request.getAttribute("User_City_List");
+	String cityname="delhi";
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,12 +55,20 @@
     >33
     <sup>o</sup>
   </span>
-  <div class="already-in-your">Already in Your List</div> 
+  <%
+    if(citylist.contains(cityname))
+    {%>
+    	<div class="already-in-your">Already in Your List</div> 
+    <% }
+    else
+    {%>
+    	<div class="already-in-your">Add to the list</div>
+<% } %> 
 
-  <% 
-  List<String> citylist =(List<String>) request.getAttribute("User_City_List");
-  for (String tempCity : citylist) { %>
-						<h2> <%= tempCity%> </h2>
+<% if (citylist != null) { %>
+    <% for (String tempcity : citylist) { %>
+        <h2><%= tempcity %></h2>
+    <% } %>
 <% } %>
   </body>
 </html>

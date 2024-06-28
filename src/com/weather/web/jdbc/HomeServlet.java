@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 
-@WebServlet("/Update")
-public class Update extends HttpServlet {
+@WebServlet("/Home")
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     @Resource(name="jdbc/weather_app")	
 	private CityDBUtil cityDBUtil;
@@ -36,7 +36,6 @@ public class Update extends HttpServlet {
 		try {
 			getList(request,response);
 		}catch (ServletException | IOException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -45,7 +44,7 @@ public class Update extends HttpServlet {
 		String username= request.getParameter("username");
 		List<String> citylist= cityDBUtil.getCity(username);
 		request.setAttribute("User_City_List",citylist);
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/updates.jsp");
+		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request,response);
 	}
 
