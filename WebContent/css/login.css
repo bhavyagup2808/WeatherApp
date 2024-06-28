@@ -1,0 +1,107 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+	background: url('../images/login_background.jpg') no-repeat center center fixed;
+    margin: 0;
+    font-family: "Opan Sans";
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-page {
+    display: flex;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.app-details {
+    background: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-details .logo {
+    width: 100px;
+    height: 100px;
+}
+
+.app-name, .tagline {
+    margin: 10px 0;
+    color: #000000;
+    text-align: center;
+}
+
+.app-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0D2E50;
+}
+
+.tagline {
+    font-size: 14px;
+    color: #0D2E50;
+}
+
+.login-form {
+    background: #0D2E50;;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    width: 300px;
+}
+
+.login-form-heading {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tagline1 {
+    margin: 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.login-attribute1 {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.login-placeholder1 {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background: none;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.submit-button {
+    background: #ffffff;
+    color: #0D2E50;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background: #dddddd;
+}
+

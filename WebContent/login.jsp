@@ -2,15 +2,14 @@
 <html>
   <head>
   	<title>Weather Update</title>
-  	<link rel="icon" type="image/x-icon" href="images/weather-app.png">
-    <link rel="stylesheet" href="css/login.css" />
+  	<link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/login.css">
 
   </head>
   <body>
     <div class="login-page">
-
           <div class="app-details">
-              <img class="logo" src="images/weather-app.png"/>
+              <img class="logo" src="images/logo.png"/>
               <h2 class="app-name">Weather Update</h2>
               <h2 class="tagline">Your Personal Weather Guide</h2> 
           </div>
@@ -20,18 +19,15 @@
 	              <h3 class="tagline1">Keep Updates Your Favorite City</h3>
 	              <%
 	              	String errorMessage=(String)request.getAttribute("errorMessage");
-	              	if(errorMessage != null){
-	              		%>
-	              		<p class="error-message">*<%= errorMessage %> </p>
-	              	<% } %>
+	              	if(errorMessage != null){%>
+	              	<p class="error-message">*<%= errorMessage %> </p>
+	              <% } %>
 	                     
-		          <div class="login-attribute1">
-		            <input class="login-placeholder1" placeholder="Username" type="text" name="username" />
-		            <div class="inner-line"></div>
-		          </div>
+			     <div class="login-attribute1">
+			       <input class="login-placeholder1" placeholder="Username" type="text" name="username" />
+			     </div>
 	            <div class="login-attribute1">
 	              <input class="login-placeholder1" placeholder="Password" type="text" name="password" />
-	              <div class="inner-line"></div>
 	            </div>
 	          <input type="Submit" class="submit-button" value="Login">
 	        </form>
