@@ -32,7 +32,6 @@
 	          <input type="Submit" class="submit-button" value="Login">
 	        </form>
           </div>
-        
       </div>
   </body>
 </html>

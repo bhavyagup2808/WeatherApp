@@ -1,4 +1,4 @@
-package com.weather.web.jdbc;
+package com.weather;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

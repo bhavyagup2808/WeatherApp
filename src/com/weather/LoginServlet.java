@@ -1,9 +1,7 @@
-package com.weather.web.jdbc;
+package com.weather;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,9 +41,9 @@ public class LoginServlet extends HttpServlet {
 
         if (appDBUtil.isValidUser(username, password)) {
         	 request.setAttribute("username",username);
-        	 getList(request,response);
-//	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp");
-//	         dispatcher.forward(request, response);
+//        	 getList(request,response);
+	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("testservlet");
+	         dispatcher.forward(request, response);
         } else if (appDBUtil.isValidUsername(username)) {
             request.setAttribute("errorMessage", "Invalid password. Please try again.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
@@ -57,13 +55,4 @@ public class LoginServlet extends HttpServlet {
         }
 		
 	}
-	private void getList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		String username= request.getParameter("username");
-		List<String> citylist= appDBUtil.getCity(username);
-		request.setAttribute("User_City_List",citylist);
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
-		dispatcher.forward(request,response);
-	}
-	
-	
 }
