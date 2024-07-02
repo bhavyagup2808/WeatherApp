@@ -1,4 +1,4 @@
-<%@ page import="java.util.*,com.weather.*,java.text.SimpleDateFormat,com.weather.values.*" %>
+<%@ page import="java.util.*,com.weather.*,java.text.SimpleDateFormat,com.weather.values.*,com.weather.client.*" %>
 <%
 List<String> citylist = (List<String>) request.getAttribute("User_City_List");
 String cityname=(String)request.getAttribute("cityname");
@@ -88,27 +88,23 @@ WeatherResponse searchResponse=(WeatherResponse)request.getAttribute("searchResp
             </div>
         </div>
         <div class="city-list">
-            <div class="city-weather">
-                <div class="city">Jaipur</div>
-                <div class="temp">33°</div>
-                <div class="details">Sunny</div>
-            </div>
-            <div class="city-weather">
-                <div class="city">NewDelhi</div>
-                <div class="temp">28°</div>
-                <div class="details">Mostly Cloudy</div>
-            </div>
-            <div class="city-weather">
-                <div class="city">Kolkata</div>
-                <div class="temp">26°</div>
-                <div class="details">Heavy Rain</div>
-            </div>
-            <div class="city-weather">
-                <div class="city">Bangalore</div>
-                <div class="temp">30°</div>
-                <div class="details">Sunny</div>
-            </div>
-            <button class="logout-button">LogOut</button>
+           
+                <% for(String tempCity:citylist)
+                {
+                	WeatherResponse carditem= WeatherUpdatesClient.getParametersCity(tempCity);
+                	%>
+                	 <div class="city-weather">
+                	<div class="city"><%= carditem.getName() %></div>
+	                <div class="temp"><%= (int)(carditem.getMain().getTemp()-273) %><sup>o</sup></div>
+	                <div class="details"><%= carditem.getWeather().get(0).getMain() %></div>
+	                </div>
+               <% }%>
+            
+           
+         </div>
+            <form action="logout" method="Post">
+            <button class="logout-button" >LogOut</button>
+            </form>
         </div>
     </div>
 </body>

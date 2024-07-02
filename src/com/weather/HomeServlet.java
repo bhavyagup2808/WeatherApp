@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.weather.client.WeatherUpdatesClient;
@@ -71,6 +72,16 @@ public class HomeServlet extends HttpServlet {
         {
         	weatherResponse=WeatherUpdatesClient.getParametersCity(request.getParameter("cityname"));
         }
+        HttpSession session = request.getSession(false);
+        String username=(String)session.getAttribute("username");
+		List<String> citylist = null;
+		try {
+			citylist = cityDBUtil.getCity(username);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Found latitude and longitude: " + username);
+		request.setAttribute("User_City_List",citylist);
 		request.setAttribute("searchResponse", weatherResponse);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request,response);

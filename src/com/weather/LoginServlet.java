@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 @WebServlet("/login")
@@ -38,9 +39,15 @@ public class LoginServlet extends HttpServlet {
 	private void getLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
-
-        if (appDBUtil.isValidUser(username, password)) {
-        	 request.setAttribute("username",username);
+        if(username.trim()=="" || password.trim()=="")
+        {
+        	request.setAttribute("errorMessage", "Enter username and password");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+            dispatcher.forward(request, response);
+        }
+        else if (appDBUtil.isValidUser(username, password)) {
+        	 HttpSession session = request.getSession();
+        	 session.setAttribute("username", username);
 	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("home");
 	         dispatcher.forward(request, response);
         } else if (appDBUtil.isValidUsername(username)) {
