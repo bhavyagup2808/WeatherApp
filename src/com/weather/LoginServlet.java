@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-@WebServlet("/Login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AppDBUtil appDBUtil;
@@ -41,8 +41,7 @@ public class LoginServlet extends HttpServlet {
 
         if (appDBUtil.isValidUser(username, password)) {
         	 request.setAttribute("username",username);
-//        	 getList(request,response);
-	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("testservlet");
+	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("home");
 	         dispatcher.forward(request, response);
         } else if (appDBUtil.isValidUsername(username)) {
             request.setAttribute("errorMessage", "Invalid password. Please try again.");

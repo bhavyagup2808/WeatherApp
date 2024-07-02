@@ -1,5 +1,6 @@
 package com.weather.values;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class WeatherResponse {
@@ -9,7 +10,7 @@ public class WeatherResponse {
     private Main main;
     private int visibility;
     private Wind wind;
-    private Rain rain;
+    private HashMap<String,Object> rain;
     private Clouds clouds;
     private long dt;
     private Sys sys;
@@ -67,11 +68,11 @@ public class WeatherResponse {
         this.wind = wind;
     }
 
-    public Rain getRain() {
+    public  HashMap<String,Object> getRain() {
         return rain;
     }
 
-    public void setRain(Rain rain) {
+    public void setRain( HashMap<String,Object> rain) {
         this.rain = rain;
     }
 

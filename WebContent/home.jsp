@@ -1,14 +1,15 @@
-<%@ page import="java.util.*,com.weather.*,java.text.SimpleDateFormat" %>
+<%@ page import="java.util.*,com.weather.*,java.text.SimpleDateFormat,com.weather.values.*" %>
 <%
 List<String> citylist = (List<String>) request.getAttribute("User_City_List");
 String cityname=(String)request.getAttribute("cityname");
+WeatherResponse searchResponse=(WeatherResponse)request.getAttribute("searchResponse");
 %>
      
-<% if (citylist != null) { %>
-    <% for (String tempcity : citylist) { %>
-    <h2><%= tempcity %></h2>
-    <% } %>
-<% } %>
+<%-- <% if (citylist != null) { %> --%>
+<%--     <% for (String tempcity : citylist) { %> --%>
+<%--     <h2><%= tempcity %></h2> --%>
+<%--     <% } %> --%>
+<%-- <% } %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -25,23 +26,32 @@ String cityname=(String)request.getAttribute("cityname");
         </div>
         <div class="main-content">
             <div class="search-bar">
-                <input type="text" placeholder="Search City">
+            <form action="home" method="post">
+            <input type="hidden" name="command" value="SEARCH">
+            <input type="text" placeholder="Search City" name="cityname">
+            </form>
+                
             </div>
             <div class="city-details">
                 <div class="city-info">
-                    <h1>Jaipur, Rajasthan</h1>
+                <% if(searchResponse !=null){%>
+                    <h1><%=searchResponse.getName() %></h1>
+                    <% } %>
                     <p><%
       Date currentDate = new Date();
       SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
       String formattedDate = dateFormat.format(currentDate); %>
-      <%= formattedDate%></p>
+      <%= formattedDate %></p>
                 </div>
                 <div class="city-image">
                     <img src="images/jaipur.jpg" alt="Jaipur">
                 </div>
                 <div class="current-temp">
-                    <h2>33°</h2>
-                    <p>Sunny</p>
+                <% if(searchResponse !=null){%>
+                    <h2><%= (int)(searchResponse.getMain().getTemp()-273) %><sup>o</sup></h2>
+                                        
+                    <p><%= searchResponse.getWeather().get(0).getMain() %></p>
+                    <% } %>
                 </div>
             </div>
             <div class="temperature-details">
@@ -68,14 +78,13 @@ String cityname=(String)request.getAttribute("cityname");
                 </div>
             </div>
             <div class="footer">
-			    <% if(citylist.contains(cityname)) 
-				    {%> 
- 				   <p>Already in Your List</p>  
-			    <% } 
-				    else
-				    {%> 
-				    <p>Add to the list</p>  
- 				<% } %>  
+<%-- 			    <% if(citylist.contains(cityname))  --%>
+<%-- 				    {%>   --%>
+<!--  				   <p>Already in Your List</p>   -->
+<%-- 			    <% }  else --%>
+<%-- 				    {%> --%>
+<!-- 				    <p>Add to the list</p>   -->
+<%--  				<% } %>   --%>
             </div>
         </div>
         <div class="city-list">

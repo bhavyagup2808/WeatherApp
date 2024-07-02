@@ -14,7 +14,7 @@
               <h2 class="tagline">Your Personal Weather Guide</h2> 
           </div>
           <div>
-	          <form class="login-form" action="Login" method="POST">
+	          <form class="login-form" action="login" method="POST">
 	              <h2 class="login-form-heading">Login</h2>
 	              <h3 class="tagline1">Keep Updates Your Favorite City</h3>
 	              <%

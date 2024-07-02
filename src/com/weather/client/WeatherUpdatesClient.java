@@ -12,7 +12,10 @@ import org.apache.http.util.EntityUtils;
 public class WeatherUpdatesClient  {
 	
 	private static final String WEATHER_UPDATE_API="abeabd49919f4aafe92338a31ded7745"; 
-	public static WeatherResponse getParameterslatlong(double latitude, double longitude) {
+	
+	private WeatherUpdatesClient() {
+	}
+	public static WeatherResponse getParameterslatlong(String latitude, String longitude) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String url = "https://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+ "&appid="+WEATHER_UPDATE_API;
         //https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid={API key}
