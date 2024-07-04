@@ -1,7 +1,7 @@
 package com.weather.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.weather.values.WeatherResponse;
+import com.weather.values.*;
 import java.io.IOException;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -22,7 +22,6 @@ public class WeatherUpdatesClient  {
         //System.out.println("API URL: " + url);
         HttpGet requestHttp = new HttpGet(url);
         WeatherResponse weatherResponse=null;
- 
         try (CloseableHttpResponse response = httpClient.execute(requestHttp)) {
             if (response.getStatusLine().getStatusCode() == 200) {
                 String result = EntityUtils.toString(response.getEntity());

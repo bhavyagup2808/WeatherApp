@@ -1,15 +1,15 @@
-<%@ page import="java.util.*,com.weather.*,java.text.SimpleDateFormat,com.weather.values.*,com.weather.client.*" %>
+<%@ page import="java.util.*,com.weather.*,java.text.SimpleDateFormat,com.weather.values.*,com.weather.client.*, javax.servlet.*" %>
 <%
-List<String> citylist = (List<String>) request.getAttribute("User_City_List");
-String cityname=(String)request.getAttribute("cityname");
-WeatherResponse searchResponse=(WeatherResponse)request.getAttribute("searchResponse");
-%>
-     
-<%-- <% if (citylist != null) { %> --%>
-<%--     <% for (String tempcity : citylist) { %> --%>
-<%--     <h2><%= tempcity %></h2> --%>
-<%--     <% } %> --%>
-<%-- <% } %> --%>
+HttpSession mysession = request.getSession(false);
+if(mysession == null || mysession.getAttribute("username") == null) {
+    response.sendRedirect("login.jsp");
+
+}
+List<String> citylist = (List<String>) mysession.getAttribute("User_City_List");
+WeatherResponse searchResponse=(WeatherResponse)mysession.getAttribute("searchResponse");
+Double avgWinter=(Double)mysession.getAttribute("AvgWinter");
+Double avgSummer=(Double)mysession.getAttribute("AvgSummer");
+ %>
 
 <!DOCTYPE html>
 <html>
@@ -54,15 +54,20 @@ WeatherResponse searchResponse=(WeatherResponse)request.getAttribute("searchResp
                     <% } %>
                 </div>
             </div>
+            
             <div class="temperature-details">
                 <div class="temperature">
                     <p>Average Winter Temperature</p>
-                    <h3>10°</h3>
+                    <% if(avgWinter != null){%>
+                     <h3><%= avgWinter %></h3> 
+                     <%} %>
                     <p>December - February</p>
                 </div>
                 <div class="temperature">
                     <p>Average Summer Temperature</p>
-                    <h3>33°</h3>
+                    <% if(avgSummer != null){%>
+                    <h3><%= avgSummer %></h3> 
+                    <%} %>
                     <p>June - August</p>
                 </div>
                 <div class="calculate-temp">
@@ -78,13 +83,17 @@ WeatherResponse searchResponse=(WeatherResponse)request.getAttribute("searchResp
                 </div>
             </div>
             <div class="footer">
-<%-- 			    <% if(citylist.contains(cityname))  --%>
-<%-- 				    {%>   --%>
-<!--  				   <p>Already in Your List</p>   -->
-<%-- 			    <% }  else --%>
-<%-- 				    {%> --%>
-<!-- 				    <p>Add to the list</p>   -->
-<%--  				<% } %>   --%>
+            <% if(searchResponse !=null){
+			     if(citylist.contains(searchResponse.getName().toLowerCase()))
+				    {%>   -
+			   <button>Already in Your List</button>  
+			     <%}else {%> 
+			     <form action="add" method="post" >
+			     <button>Add to the list</button> 
+			     </form>
+			    
+  				<%}
+			 } %> 
             </div>
         </div>
         <div class="city-list">
