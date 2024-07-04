@@ -38,6 +38,26 @@ public class CityDBUtil {
         }
 		return cityList;
 	}
+	public void addCity(String cityname, String username) throws SQLException {
+		Connection myConn = null;
+        PreparedStatement mystm = null;
+        ResultSet myrs = null;
+		try {
+	        myConn = dataSource.getConnection();
+	        cityname=cityname.toLowerCase();
+	        String sql = "INSERT INTO city_list values(1,?,?)";
+	        mystm = myConn.prepareStatement(sql);
+	        mystm.setString(1, username);
+	        mystm.setString(2, cityname);
+	        mystm.execute();
+	        System.out.println("City added successfully!");
+		}
+		finally {
+			close(myConn, mystm, myrs);
+		}
+        return;
+		
+	}
 	 private void close(Connection myConn, PreparedStatement myStm, ResultSet myrs) {
 	        try {
 	            if (myrs != null) {
@@ -53,5 +73,7 @@ public class CityDBUtil {
 	            e.printStackTrace();
 	        }
 	    }
+
+	
 	
 }

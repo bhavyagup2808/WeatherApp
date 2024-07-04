@@ -88,7 +88,7 @@ Double avgSummer=(Double)mysession.getAttribute("AvgSummer");
 				    {%>   -
 			   <button>Already in Your List</button>  
 			     <%}else {%> 
-			     <form action="add" method="post" >
+			     <form action="add" method="Post" >
 			     <button>Add to the list</button> 
 			     </form>
 			    
@@ -115,6 +115,5 @@ Double avgSummer=(Double)mysession.getAttribute("AvgSummer");
             <button class="logout-button" >LogOut</button>
             </form>
         </div>
-    </div>
 </body>
 </html>
