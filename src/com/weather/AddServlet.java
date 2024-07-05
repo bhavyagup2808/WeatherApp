@@ -2,6 +2,7 @@ package com.weather;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -36,15 +37,19 @@ public class AddServlet extends HttpServlet {
 		WeatherResponse searchResponse=(WeatherResponse)session.getAttribute("searchResponse");
 		String username=(String)session.getAttribute("username");
 		String cityname=searchResponse.getName();
-		System.out.println(username+cityname);
-		try {
-			cityDBUtil.addCity(cityname,username);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		ArrayList<String> temp=(ArrayList<String>)session.getAttribute("User_City_List");
+		if(!temp.contains(cityname.toLowerCase()))
+		{
+			try {
+				cityDBUtil.addCity(cityname,username);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		RequestDispatcher dispatcher=request.getRequestDispatcher("home");
 		dispatcher.forward(request,response);
+		
 	}
 
 }

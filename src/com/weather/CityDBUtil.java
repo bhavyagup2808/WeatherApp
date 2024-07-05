@@ -45,12 +45,11 @@ public class CityDBUtil {
 		try {
 	        myConn = dataSource.getConnection();
 	        cityname=cityname.toLowerCase();
-	        String sql = "INSERT INTO city_list values(1,?,?)";
+	        String sql = "INSERT INTO city_list values(?,?)";
 	        mystm = myConn.prepareStatement(sql);
 	        mystm.setString(1, username);
 	        mystm.setString(2, cityname);
 	        mystm.execute();
-	        System.out.println("City added successfully!");
 		}
 		finally {
 			close(myConn, mystm, myrs);
