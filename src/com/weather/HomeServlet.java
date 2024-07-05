@@ -69,6 +69,7 @@ public class HomeServlet extends HttpServlet {
             String latitude = parts[0].trim();
             String longitude = parts[1].trim();
             weatherResponse=WeatherUpdatesClient.getParameterslatlong(latitude,longitude);
+            System.out.println("here7");
             monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
         }
         else
@@ -76,14 +77,17 @@ public class HomeServlet extends HttpServlet {
         	weatherResponse=WeatherUpdatesClient.getParametersCity(request.getParameter("cityname"));
         	monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
         }
+        System.out.println("here15");
         if(monthData !=null) {
         	double avgtemp=0; 
         	double count=0;
+        	System.out.println("here16");
             for(int i=11;i%12>10 || i%12<2;i++)
             {
             	avgtemp+= monthData.get(i%12);
             	count++;
            	}
+            System.out.println("here17");
             avgtemp/=count;
             session.setAttribute("AvgWinter",avgtemp );
          }

@@ -23,11 +23,14 @@ public class WeatherUpdatesClient  {
         HttpGet requestHttp = new HttpGet(url);
         WeatherResponse weatherResponse=null;
         try (CloseableHttpResponse response = httpClient.execute(requestHttp)) {
+        	System.out.println("here");
             if (response.getStatusLine().getStatusCode() == 200) {
+
                 String result = EntityUtils.toString(response.getEntity());
                 ObjectMapper mapper = new ObjectMapper();
                 weatherResponse = mapper.readValue(result, WeatherResponse.class);
             } else {
+
                 System.out.println("Failed to get weather data. HTTP error code: " + response.getStatusLine().getStatusCode());
             }
             

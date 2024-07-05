@@ -8,4 +8,8 @@
         <servlet-name>add</servlet-name>
         <servlet-class>com.weather.AddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>avg</servlet-name>
+        <servlet-class>com.weather.avgServlet</servlet-class>
+    </servlet>
 </web-app>

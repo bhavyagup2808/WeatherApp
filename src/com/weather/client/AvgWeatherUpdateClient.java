@@ -17,6 +17,7 @@ public class AvgWeatherUpdateClient {
 	{
 		String apiUrl = "http://localhost:3000/cities";
         URL url = new URL(apiUrl);
+        ArrayList<Integer> temp=new ArrayList<Integer>();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("GET");
@@ -26,9 +27,11 @@ public class AvgWeatherUpdateClient {
                 connection.getInputStream(),
                 new TypeReference<Map<String, MonthData>>() {}
         );
-         String string=Character.toString(CityName.toUpperCase().charAt(0));
+        String string=null;
+         if(CityName.length()>0) {
+        	 string=Character.toString(CityName.toUpperCase().charAt(0));
          MonthData monthsData = citiesData.get(string);
-         ArrayList<Integer> temp=new ArrayList<Integer>();
+         
          if(monthsData !=null)
          {
          	temp.add(monthsData.getJanuary());
@@ -43,6 +46,7 @@ public class AvgWeatherUpdateClient {
          	temp.add(monthsData.getOctober());
          	temp.add(monthsData.getNovember());
          	temp.add(monthsData.getDecember());
+         }
          }
          return temp;
             
