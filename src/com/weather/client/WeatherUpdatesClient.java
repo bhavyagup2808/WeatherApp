@@ -23,7 +23,6 @@ public class WeatherUpdatesClient  {
         HttpGet requestHttp = new HttpGet(url);
         WeatherResponse weatherResponse=null;
         try (CloseableHttpResponse response = httpClient.execute(requestHttp)) {
-        	System.out.println("here");
             if (response.getStatusLine().getStatusCode() == 200) {
 
                 String result = EntityUtils.toString(response.getEntity());

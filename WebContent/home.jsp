@@ -100,7 +100,8 @@ String error =request.getParameter("errorMessageCustom");
                     <p><%=error %></p>
                     <% }%>
                     <div class="result">
-                        <% if(avgCustom !=null){ %><h3><%= avgCustom %>></h3>
+                        <% if(avgCustom !=null){ 
+                      %><h3><%= avgCustom.intValue() %></h3>
                         <% } %>
                     </div>
                 </div>
