@@ -27,7 +27,7 @@
 			       <input class="login-placeholder1" placeholder="Username" type="text" name="username" />
 			     </div>
 	            <div class="login-attribute1">
-	              <input class="login-placeholder1" placeholder="Password" type="text" name="password" />
+	              <input class="login-placeholder1" placeholder="Password" type="password" name="password" />
 	            </div>
 	          <input type="Submit" class="submit-button" value="Login">
 	        </form>

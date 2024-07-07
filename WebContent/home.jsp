@@ -29,7 +29,7 @@ String error =request.getParameter("errorMessageCustom");
             <form action="home" method="post">
             <input type="hidden" name="command" value="SEARCH">
             <input type="text" placeholder="Search City by Name or Latitude,Longitude" name="cityname">
-            </form>   
+            </form>  
             </div>
             <div class="details">
             <% if(searchResponse == null){  %> 
@@ -55,7 +55,6 @@ String error =request.getParameter("errorMessageCustom");
                 <div class="city-info">
                 <% if(searchResponse !=null){%>
                     <h1><%=searchResponse.getName() %></h1>
-                    <% } %>
                     <p><%
       Date currentDate = new Date();
       SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
@@ -63,10 +62,12 @@ String error =request.getParameter("errorMessageCustom");
       <%= formattedDate %></p>
                 </div>
                 <div class="current-temp">
-                <% if(searchResponse !=null){%>
                     <h2><%= (int)(searchResponse.getMain().getTemp()-273) %><sup>o</sup></h2>
                                         
                     <p><%= searchResponse.getWeather().get(0).getMain() %></p>
+                    <% }
+                else{ %>
+                    <p>Search the city</p>
                     <% } %>
                 </div>
             </div>

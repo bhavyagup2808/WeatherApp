@@ -63,31 +63,36 @@ public class HomeServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (matcher.find()) {
             String latLong = matcher.group();
-            System.out.println("Found latitude and longitude: " + latLong);
 
             String[] parts = latLong.split(",");
             String latitude = parts[0].trim();
             String longitude = parts[1].trim();
             weatherResponse=WeatherUpdatesClient.getParameterslatlong(latitude,longitude);
-            System.out.println("here7");
-            monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
+            if(weatherResponse !=null)monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
+            else
+        	{
+        		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
+        		dispatcher.forward(request,response);
+        	}
         }
         else
         {
         	weatherResponse=WeatherUpdatesClient.getParametersCity(request.getParameter("cityname"));
-        	monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
+        	if(weatherResponse !=null) monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
+        	else
+        	{
+        		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
+        		dispatcher.forward(request,response);
+        	}
         }
-        System.out.println("here15");
         if(monthData !=null) {
         	double avgtemp=0; 
         	double count=0;
-        	System.out.println("here16");
             for(int i=11;i%12>10 || i%12<2;i++)
             {
             	avgtemp+= monthData.get(i%12);
             	count++;
            	}
-            System.out.println("here17");
             avgtemp/=count;
             session.setAttribute("AvgWinter",avgtemp );
          }
