@@ -29,6 +29,7 @@ String error =request.getParameter("errorMessageCustom");
             <form action="home" method="post">
             <input type="hidden" name="command" value="SEARCH">
             <input type="text" placeholder="Search City by Name or Latitude,Longitude" name="cityname">
+            <input type="submit" value="Search" style="padding:10px;  border: none; border-radius: 5px; background:#0D2E50; color: white;"> 
             </form>  
             </div>
             <div class="details">
@@ -76,14 +77,14 @@ String error =request.getParameter("errorMessageCustom");
                 <div class="temperature">
                     <p>Average Winter Temperature</p>
                     <% if(avgWinter != null){%>
-                     <p><%= avgWinter %></p> 
+                     <p><%= avgWinter %><sup>o</sup></p> 
                      <%} %>
                     <p>December - February</p>
                 </div>
                 <div class="temperature">
                     <p>Average Summer Temperature</p>
                     <% if(avgSummer != null){%>
-                    <p><%= avgSummer %></p> 
+                    <p><%= avgSummer %><sup>o</sup></p> 
                     <%} %>
                     <p>June - August</p>
                 </div>
@@ -102,7 +103,7 @@ String error =request.getParameter("errorMessageCustom");
                     <% }%>
                     <div class="result">
                         <% if(avgCustom !=null){ 
-                      %><h3><%= avgCustom.intValue() %></h3>
+                      %><h3><%= avgCustom.intValue() %><sup>o</sup></h3>
                         <% } %>
                     </div>
                 </div>
