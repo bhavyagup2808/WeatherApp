@@ -30,7 +30,7 @@ public class WeatherUpdatesClient  {
                 weatherResponse = mapper.readValue(result, WeatherResponse.class);
             } else {
 
-                System.out.println("Failed to get weather data. HTTP error code: " + response.getStatusLine().getStatusCode());
+                System.out.println("Failed to get weather data. HTTP error code of this latitude : " + response.getStatusLine().getStatusCode());
             }
             
         } catch (IOException e) {

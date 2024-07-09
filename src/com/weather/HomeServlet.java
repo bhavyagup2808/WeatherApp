@@ -55,7 +55,7 @@ public class HomeServlet extends HttpServlet {
 	}
 
 	private void getsearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String regex = "[+-]?(90(\\.0+)?|[1-8]?\\d(\\.\\d+)?),\\s*[+-]?(180(\\.0+)?|1[0-7]\\d(\\.\\d+)?|[1-9]?\\d(\\.\\d+)?)";
+		String regex = "-?\\d+(\\.\\d+)?,-?\\d+(\\.\\d+)?";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher((request.getParameter("cityname")));
         WeatherResponse weatherResponse=null;
