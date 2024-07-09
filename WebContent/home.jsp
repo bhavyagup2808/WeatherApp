@@ -8,7 +8,7 @@ WeatherResponse searchResponse=(WeatherResponse)mysession.getAttribute("searchRe
 Double avgWinter=(Double)mysession.getAttribute("AvgWinter");
 Double avgSummer=(Double)mysession.getAttribute("AvgSummer");
 Double avgCustom=(Double)request.getAttribute("AvgCustom");
-String error =request.getParameter("errorMessageCustom");
+String error =(String)request.getAttribute("errorMessageCustom");
  %>
 
 <!DOCTYPE html>
@@ -99,7 +99,7 @@ String error =request.getParameter("errorMessageCustom");
                     </form>  
                     </div>
                     <% 	if(error !=null){%>
-                    <p><%=error %></p>
+                    <p>* <%= error %></p>
                     <% }%>
                     <div class="result">
                         <% if(avgCustom !=null){ 

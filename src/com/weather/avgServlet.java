@@ -25,34 +25,28 @@ public class avgServlet extends HttpServlet {
 		WeatherResponse weatherResponse=(WeatherResponse)session.getAttribute("searchResponse");
 		String startdate=request.getParameter("startdate");
 		String enddate=request.getParameter("enddate");
-//		System.out.println(startdate+enddate);
 		ArrayList<Integer> monthData=null;
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
 		if(weatherResponse==null)
 		{
-//			System.out.println("here2");
 			request.setAttribute("errorMessageCustom", "First Search the city");
 		}
 		else if(isValidDate(enddate)==false || isValidDate(startdate)==false || isStartDateEarlier(startdate,enddate)==false)
 		{
-//			System.out.println("here1");
 			request.setAttribute("errorMessageCustom", "Enter the duration correctly");
 		}
 		else
 		{
 			 double avgcustom=0;
 			 monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
-//			 System.out.println("hey i m baCK");
 			 try {
 				Date start = dateFormat.parse(startdate);
 				Date end = dateFormat.parse(enddate);
-//				System.out.println("here");
 				Calendar startCalendar = Calendar.getInstance();
 	            startCalendar.setTime(start);
 
 	            Calendar endCalendar = Calendar.getInstance();
 	            endCalendar.setTime(end);
-//	            System.out.println("here4");
 	            int startYear = startCalendar.get(Calendar.YEAR);
 	            int startMonth = startCalendar.get(Calendar.MONTH);
 
@@ -60,7 +54,7 @@ public class avgServlet extends HttpServlet {
 	            int endMonth = endCalendar.get(Calendar.MONTH);
 	            double  count=(endYear - startYear) * 12 + (endMonth - startMonth);
 	            int n=1;
-//	            System.out.println("here6");
+
 	            for(int x=startMonth;n<=count;x++)
 	            {
 	            	avgcustom += monthData.get(x%12);
@@ -68,13 +62,13 @@ public class avgServlet extends HttpServlet {
 	            }
 	            avgcustom /= count;
 	            request.setAttribute("AvgCustom", avgcustom);
-//	            System.out.println("here5");
 			} 
 			catch (ParseException e) {
 				e.printStackTrace();
 			}
 	         
 		}
+		System.out.println();
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request,response);
 	}
@@ -91,7 +85,7 @@ public class avgServlet extends HttpServlet {
     }
 	public static boolean isValidDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
-        dateFormat.setLenient(false); // Ensure strict date parsing
+        dateFormat.setLenient(false); 
         try {
             dateFormat.parse(date);
             return true;
