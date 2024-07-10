@@ -18,8 +18,6 @@ public class WeatherUpdatesClient  {
 	public static WeatherResponse getParameterslatlong(String latitude, String longitude) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String url = "https://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+ "&appid="+WEATHER_UPDATE_API;
-        //https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid={API key}
-        //System.out.println("API URL: " + url);
         HttpGet requestHttp = new HttpGet(url);
         WeatherResponse weatherResponse=null;
         try (CloseableHttpResponse response = httpClient.execute(requestHttp)) {

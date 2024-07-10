@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family:Opan sans;
+    font-family:"Opan sans";
     background-color: #344F6B;
     color: white;
 }
@@ -211,5 +211,6 @@ body {
     cursor: pointer;
     font-size: 16px;
     text-align: center;
+    cursor: pointer;
 }
 

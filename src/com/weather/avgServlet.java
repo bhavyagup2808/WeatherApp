@@ -68,7 +68,6 @@ public class avgServlet extends HttpServlet {
 			}
 	         
 		}
-		System.out.println();
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request,response);
 	}

@@ -29,7 +29,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
             <form action="home" method="post">
             <input type="hidden" name="command" value="SEARCH">
             <input type="text" placeholder="Search City by Name or Latitude,Longitude" name="cityname">
-            <input type="submit" value="Search" style="padding:10px;  border: none; border-radius: 5px; background:#0D2E50; color: white;"> 
+            <input type="submit" value="Search" style="padding:10px;  border: none; border-radius: 5px; background:#0D2E50; color: white; cursor: pointer;"> 
             </form>  
             </div>
             <div class="details">
@@ -95,7 +95,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
                     	<input type="text" placeholder="MM/YYYY" name="startdate">
                         <span>-</span>
                         <input type="text" placeholder="MM/YYYY" name="enddate">
-                        <button>Go</button>
+                        <button style="cursor: pointer; padding: 4px 5px; background-color: transparent; border: 1px solid #ffffff; color: #ffffff; border-radius:2px;">Go</button>
                     </form>  
                     </div>
                     <% 	if(error !=null){%>
@@ -114,7 +114,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
 			   <button>Already in Your List</button>  
 			     <%}else {%> 
 			     <form action="add" method="Post" >
-			     <button>Add to the list</button> 
+			     <button style="cursor: pointer;">Add to the list</button> 
 			     </form>
 			    
   				<%}

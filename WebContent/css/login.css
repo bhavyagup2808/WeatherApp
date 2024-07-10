@@ -37,7 +37,6 @@ body {
 
 .app-name, .tagline {
     margin: 10px 0;
-    color: #000000;
     text-align: center;
 }
 
@@ -102,6 +101,6 @@ body {
 }
 
 .submit-button:hover {
-    background: #dddddd;
+    background:rgb(225, 226, 227);
 }
 
