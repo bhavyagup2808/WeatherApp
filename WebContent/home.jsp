@@ -15,6 +15,8 @@ String error =(String)request.getAttribute("errorMessageCustom");
 <html>
 <head>
     <title>Weather Updates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
@@ -34,7 +36,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
             </div>
             <div class="details">
             <% if(searchResponse == null){  %> 
-             		<div class="city-details" style="background: url('images/Clear.jpg') no-repeat center center ;background-size: cover">
+             		<div class="city-details" style="background: url('images/default.png') no-repeat center center ;background-size: cover">
             <% }
             else if(searchResponse.getWeather().get(0).getMain().equals("Clear")){%>
                   <div class="city-details" style="background: url('images/Clear.jpg') no-repeat center center ; background-size: cover">
@@ -68,12 +70,13 @@ String error =(String)request.getAttribute("errorMessageCustom");
                     <p><%= searchResponse.getWeather().get(0).getMain() %></p>
                     <% }
                 else{ %>
-                    <p>Search the city</p>
+                    <p style="padding: 170px 70px; color:#0D2E50; font-size: 25px;" >Search the city</p>
                     <% } %>
                 </div>
             </div>
             
             <div class="temperature-details">
+            <div>
                 <div class="temperature">
                     <p>Average Winter Temperature</p>
                     <% if(avgWinter != null){%>
@@ -107,6 +110,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
                         <% } %>
                     </div>
                 </div>
+                </div>
                 <div class="footer">
             <% if(searchResponse !=null){
 			     if(citylist.contains(searchResponse.getName().toLowerCase()))
@@ -124,22 +128,30 @@ String error =(String)request.getAttribute("errorMessageCustom");
             </div>            
         </div>
         <div class="city-list">
+        <div class="card">
          <%   if(citylist !=null){
                 for(String tempCity:citylist)
                 {
                 	WeatherResponse carditem= WeatherUpdatesClient.getParametersCity(tempCity);
                 	%>
-                	 <div class="city-weather">
+                	<div class="city-weather">
+                	<div class="name_temp">
                 	<div class="city"><%= carditem.getName() %></div>
 	                <div class="temp"><%= (int)(carditem.getMain().getTemp()-273) %><sup>o</sup></div>
+	                </div>
+	                <div class="weather_highlow">
 	                <div class="details"><%= carditem.getWeather().get(0).getMain() %></div>
+	                <div class="highlow">H:<%=carditem.getMain().getTemp_max() %> | L:<%= carditem.getMain().getTemp_min() %></div>
+	                </div>
 	                </div>
                <% } 
                }%>
-            
+         </div>
+         <div>
            <form action="logout" method="Post">
             <button class="logout-button" >LogOut</button>
             </form>
+         </div>
          </div>
             
         </div>
