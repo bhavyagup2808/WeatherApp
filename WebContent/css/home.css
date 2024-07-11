@@ -1,9 +1,8 @@
 body {
-    margin: 0;
-    padding: 0;
     font-family:"Opan sans";
     background-color: #344F6B;
     color: white;
+    margin:0;
 }
 
 .container {
@@ -12,7 +11,7 @@ body {
 }
 
 .sidebar {
-    height:100vh;
+    height:93vh;
     width:2rem;
     background-color:  #344F6B;
 	padding: 20px; 
@@ -24,7 +23,7 @@ body {
 
 .main-content {
     flex: 1;
-    padding: 20px;
+    padding: 20px 10px;
 }
 
 .search-bar {
@@ -168,29 +167,39 @@ body {
 
 .city-list {
 	background:#0D2E50;
-    padding: 20px;
+    padding: 15px;
     color: white;
     margin: 0 auto;
     width: 250px;
+    display:flex;
+    flex-direction:column;
+	justify-content: space-between;
+	
 }
+
 
 .city-weather {
     border-bottom: 1px solid #2A4D69;
-    padding: 10px 0;
+    padding: 5px 0px 7px 0px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction:column;
 }
-
-.city-weather:last-child {
-    border-bottom: none;
+.name_temp
+{
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
 }
-
 .city {
     font-size: 18px;
     font-weight: bold;
 }
-
+.weather_highlow
+{
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+}
 .temp {
     font-size: 24px;
     font-weight: bold;

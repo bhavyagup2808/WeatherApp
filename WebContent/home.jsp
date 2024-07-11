@@ -141,7 +141,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
 	                </div>
 	                <div class="weather_highlow">
 	                <div class="details"><%= carditem.getWeather().get(0).getMain() %></div>
-	                <div class="highlow">H:<%=carditem.getMain().getTemp_max() %> | L:<%= carditem.getMain().getTemp_min() %></div>
+	                <div class="highlow">H:<%= (int)(carditem.getMain().getTemp_max()-273) %><sup>o</sup> | L:<%= (int)(carditem.getMain().getTemp_min()-273) %><sup>o</sup></div>
 	                </div>
 	                </div>
                <% } 
