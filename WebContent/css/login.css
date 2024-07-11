@@ -1,6 +1,5 @@
 html, body {
     margin: 0;
-    height: 100%;
 }
 
 body {
@@ -11,19 +10,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height:100vh;
 }
 
 .login-page {
     display: flex;
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
 }
 
 .app-details {
-    background: #ffffff;
-    padding: 40px;
+	border-radius: 0.5rem 0rem 0rem 0.5rem  ;
+    background:#0D2E50;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,76 +28,76 @@ body {
 }
 
 .app-details .logo {
-    width: 100px;
-    height: 100px;
+    width: 6vw;
 }
 
 .app-name, .tagline {
-    margin: 10px 0;
+    margin: 0.25rem 0rem;
     text-align: center;
 }
 
 .app-name {
-    font-size: 24px;
+    font-size: 2vw;
     font-weight: bold;
-    color: #0D2E50;
+    color: #ffffff;
 }
 
 .tagline {
-    font-size: 14px;
-    color: #0D2E50;
+    font-size: 1.3vw;
+    color: #ffffff;
 }
 
 .login-form {
-    background: #0D2E50;;
-    padding: 40px;
+    background: #ffffff;
+    border-radius: 0rem 0.5rem 0.5rem 0rem  ;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
-    width: 300px;
+    color: #0D2E50;
+    width:25vw;
 }
 
 .login-form-heading {
     margin: 0;
-    font-size: 24px;
+    font-size: 2vw;
+    margin:  0.3125rem 0;
     font-weight: bold;
 }
 
 .tagline1 {
-    margin: 10px 0;
-    font-size: 14px;
+    margin:  0.3125rem 0;
+    font-size: 1.25vw;
     text-align: center;
 }
 
 .login-attribute1 {
     width: 100%;
-    margin: 10px 0;
+    margin: 0.625rem 0rem;
 }
 
 .login-placeholder1 {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 5px;
+    width: 23.5vw;
+    padding: 0.5rem;
+    margin-bottom: 0.3125rem;
     border: none;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 0.1px solid #0D2E50;
     background: none;
-    color: #ffffff;
-    font-size: 16px;
+    color: #0D2E50;
+    font-size: 1.25vw;
 }
 
 .submit-button {
-    background: #ffffff;
-    color: #0D2E50;
+    background: #0D2E50;
+    color: #ffffff;
+    margin-top: 1rem;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius:0.1rem;
+    padding: 0.75rem;
+    font-size: 2vw;
     cursor: pointer;
     transition: background 0.3s;
-}
-
-.submit-button:hover {
-    background:rgb(225, 226, 227);
+     width: 25vw;
 }
 

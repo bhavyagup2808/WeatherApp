@@ -2,6 +2,7 @@
 <html>
   <head>
   	<title>Weather Update</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="stylesheet" href="css/login.css">
 
@@ -20,7 +21,7 @@
 	              <%
 	              	String errorMessage=(String)request.getAttribute("errorMessage");
 	              	if(errorMessage != null){%>
-	              	<p class="error-message">*<%= errorMessage %> </p>
+	              	<p class="error-message" style="color: red; margin: 0.5rem 0rem ; font-size: 1.25vw;">*<%= errorMessage %> </p>
 	              <% } %>
 	                     
 			     <div class="login-attribute1">

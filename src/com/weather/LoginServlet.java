@@ -50,12 +50,8 @@ public class LoginServlet extends HttpServlet {
         	 session.setAttribute("username", username);
 	    	 RequestDispatcher dispatcher = request.getRequestDispatcher("home");
 	         dispatcher.forward(request, response);
-        } else if (appDBUtil.isValidUsername(username)) {
-            request.setAttribute("errorMessage", "Invalid password. Please try again.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-            dispatcher.forward(request, response);
         } else {
-            request.setAttribute("errorMessage", "The user is not registered.");
+            request.setAttribute("errorMessage", "Invalid username or password");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
         }

@@ -52,7 +52,7 @@ public class avgServlet extends HttpServlet {
 
 	            int endYear = endCalendar.get(Calendar.YEAR);
 	            int endMonth = endCalendar.get(Calendar.MONTH);
-	            double  count=(endYear - startYear) * 12 + (endMonth - startMonth);
+	            int  count=(endYear - startYear) * 12 + (endMonth - startMonth);
 	            int n=1;
 
 	            for(int x=startMonth;n<=count;x++)

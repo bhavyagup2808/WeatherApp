@@ -12,4 +12,8 @@
         <servlet-name>avg</servlet-name>
         <servlet-class>com.weather.avgServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>com.weather.LoginServlet</servlet-class>
+    </servlet>
 </web-app>
