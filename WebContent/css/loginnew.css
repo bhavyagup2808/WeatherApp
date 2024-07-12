@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  background: url('...images/login_background.jpg') no-repeat center center fixed;
+  background: url('../images/login_background.jpg') no-repeat center center fixed;
   margin: 0;
   font-family: 'Opan Sans';
   background-size: cover;
