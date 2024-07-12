@@ -28,8 +28,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
         </div>
         <div class="main-content">
             <div class="search-bar">
-            <form action="home" method="post">
-            <input type="hidden" name="command" value="SEARCH">
+            <form action="search" method="post">
             <input type="text" placeholder="Search City by Name or Latitude,Longitude" name="cityname">
             <input type="submit" value="Search" style="padding:10px;  border: none; border-radius: 5px; background:#0D2E50; color: white; cursor: pointer;"> 
             </form>  
@@ -70,7 +69,7 @@ String error =(String)request.getAttribute("errorMessageCustom");
                     <p><%= searchResponse.getWeather().get(0).getMain() %></p>
                     <% }
                 else{ %>
-                    <p style="padding: 170px 70px; color:#0D2E50; font-size: 25px;" >Search the city</p>
+                    <p style="padding: 160px 70px; color:#0D2E50; font-size: 25px;" >Search the city</p>
                     <% } %>
                 </div>
             </div>
@@ -115,10 +114,10 @@ String error =(String)request.getAttribute("errorMessageCustom");
             <% if(searchResponse !=null){
 			     if(citylist.contains(searchResponse.getName().toLowerCase()))
 				    {%>   
-			   <button>Already in Your List</button>  
+			   <button class"add-button">Already in Your List</button>  
 			     <%}else {%> 
 			     <form action="add" method="Post" >
-			     <button style="cursor: pointer;">Add to the list</button> 
+			     <button class"add-button" style="cursor: pointer;">Add to the list</button> 
 			     </form>
 			    
   				<%}

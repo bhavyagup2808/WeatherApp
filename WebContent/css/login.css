@@ -15,11 +15,10 @@ body {
 
 .login-page {
     display: flex;
-    height:70vh;
 }
 
 .app-details {
-	border-radius: 0.5rem 0rem 0rem 0.5rem  ;
+	border-radius: 0.4rem 0rem 0rem 0.4rem  ;
     background:#0D2E50;
     padding: 3rem;
     display: flex;
@@ -54,7 +53,7 @@ body {
 
 .login-form {
     background: #ffffff;
-    border-radius: 0rem 0.5rem 0.5rem 0rem  ;
+    border-radius: 0rem 0.4rem 0.4rem 0rem  ;
     padding: 3rem;
     display: flex;
     flex-direction: column;
@@ -96,8 +95,8 @@ body {
     color: #ffffff;
     margin-top: 1rem;
     border: none;
-    border-radius:0.1rem;
-    padding: 0.75rem;
+    border-radius:0.2rem;
+    padding: 0.7rem;
     font-size: 1.6vw;
     cursor: pointer;
     transition: background 0.3s;

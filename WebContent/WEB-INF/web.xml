@@ -16,4 +16,8 @@
         <servlet-name>login</servlet-name>
         <servlet-class>com.weather.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>search</servlet-name>
+        <servlet-class>com.weather.SearchServlet</servlet-class>
+    </servlet>
 </web-app>

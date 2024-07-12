@@ -38,81 +38,9 @@ public class HomeServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String command=request.getParameter("command");
-		if(command==null){
-			command="LIST";
-		}
-		switch (command)
-		{
-			case "LIST":
-				getlist(request,response);
-				break;
-			case "SEARCH":
-				getsearch(request,response);
-				break;
-		}
-		
+		getlist(request,response);
+	
 	}
-
-	private void getsearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String regex = "-?\\d+(\\.\\d+)?,-?\\d+(\\.\\d+)?";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher((request.getParameter("cityname")));
-        WeatherResponse weatherResponse=null;
-        ArrayList<Integer> monthData=null;
-        HttpSession session = request.getSession(false);
-        if (matcher.find()) {
-            String latLong = matcher.group();
-
-            String[] parts = latLong.split(",");
-            String latitude = parts[0].trim();
-            String longitude = parts[1].trim();
-            weatherResponse=WeatherUpdatesClient.getParameterslatlong(latitude,longitude);
-            if(weatherResponse !=null)monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
-            else
-        	{
-        		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
-        		dispatcher.forward(request,response);
-        	}
-        }
-        else
-        {
-        	weatherResponse=WeatherUpdatesClient.getParametersCity(request.getParameter("cityname"));
-        	if(weatherResponse !=null) monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
-        	else
-        	{
-        		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
-        		dispatcher.forward(request,response);
-        	}
-        }
-        if(monthData !=null) {
-        	double avgtemp=0; 
-        	double count=0;
-            for(int i=11;i%12>10 || i%12<2;i++)
-            {
-            	avgtemp+= monthData.get(i%12);
-            	count++;
-           	}
-            avgtemp/=count;
-            session.setAttribute("AvgWinter",avgtemp );
-         }
-        if(monthData !=null)
-        { 
-        	double avgtemp=0;
-        	double count=0;
-            for(int i=5;i<8;i++)
-            {
-	          	avgtemp+= monthData.get(i%12);
-	         	count++;
-	         }
-            avgtemp/=count;
-            session.setAttribute("AvgSummer",avgtemp );
-        }
-		session.setAttribute("searchResponse", weatherResponse);
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
-		dispatcher.forward(request,response);
-	}
-
 	private void getlist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
         String username=(String)session.getAttribute("username");

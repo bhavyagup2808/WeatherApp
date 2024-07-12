@@ -1,0 +1,146 @@
+@charset "UTF-8";
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: url('...images/login_background.jpg') no-repeat center center fixed;
+  margin: 0;
+  font-family: 'Opan Sans';
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-page {
+  display: flex;
+}
+
+.app-details {
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+  background: #0d2e50;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-details .logo {
+  width: 7vw;
+}
+
+.app-name,
+.tagline {
+  margin: 0.25rem 0rem;
+  text-align: center;
+}
+
+.app-name {
+  font-size: 2vw;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 1.3vw;
+  color: #ffffff;
+}
+
+.login-form-page {
+  display: flex;
+  background: #ffffff;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+  padding: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #0d2e50;
+}
+
+.login-form-heading {
+  font-size: 2vw;
+  margin: 0.3125rem 0;
+  font-weight: bold;
+}
+
+.tagline1 {
+  margin: 0.3125rem 0;
+  font-size: 1.25vw;
+  text-align: center;
+}
+
+.login-attribute1 {
+  margin: 0.625rem 0rem;
+}
+
+.login-placeholder1 {
+  width: 23.5vw;
+  padding: 0.5rem;
+  margin-bottom: 0.3125rem;
+  border: none;
+  border-bottom: 0.1px solid #0d2e50;
+  background: none;
+  color: #0d2e50;
+  font-size: 1.25vw;
+}
+
+.submit-button {
+  background: #0d2e50;
+  color: #ffffff;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.1rem;
+  padding: 0.75rem;
+  font-size: 1.6vw;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 26vw;
+}
+
+@media (max-width: 564px) {
+  .app-details .logo {
+    width: 10vw;
+  }
+  .login-form-heading {
+    font-size: 4vw;
+  }
+  .tagline1 {
+    font-size: 2vw;
+  }
+}
+
+@media (max-width: 408px) {
+  .login-page {
+    width: 80%;
+    flex-direction: column;
+  }
+  .login-form-page {
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .app-name {
+   font-size: 3vw;
+  }
+  .app-details {
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+  }
+  .login-form-page {
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+  }
+  .login-attribute1 {
+    margin: 0.3rem 0rem;
+  }
+  .logo {
+    margin-top: 1rem;
+  }
+}
