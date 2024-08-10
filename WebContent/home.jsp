@@ -9,6 +9,7 @@ Double avgWinter=(Double)mysession.getAttribute("AvgWinter");
 Double avgSummer=(Double)mysession.getAttribute("AvgSummer");
 Double avgCustom=(Double)request.getAttribute("AvgCustom");
 String error =(String)request.getAttribute("errorMessageCustom");
+String searchError=(String)request.getAttribute("SearchError");
  %>
 
 <!DOCTYPE html>
@@ -70,6 +71,8 @@ String error =(String)request.getAttribute("errorMessageCustom");
                     <% }
                 else{ %>
                     <p style="padding: 160px 70px; color:#0D2E50; font-size: 25px;" >Search the city</p>
+                    <%if(searchError != null) {%><p style="color:red; align=center;font-size: 15px;"> *<%=searchError %></p>
+                    <%} %>
                     <% } %>
                 </div>
             </div>
@@ -78,14 +81,14 @@ String error =(String)request.getAttribute("errorMessageCustom");
             <div>
                 <div class="temperature">
                     <p>Average Winter Temperature</p>
-                    <% if(avgWinter != null){%>
+                    <% if(avgWinter != null && searchResponse !=null){%>
                      <p><%= avgWinter %><sup>o</sup></p> 
                      <%} %>
                     <p>December - February</p>
                 </div>
                 <div class="temperature">
                     <p>Average Summer Temperature</p>
-                    <% if(avgSummer != null){%>
+                    <% if(avgSummer != null && searchResponse !=null){%>
                     <p><%= avgSummer %><sup>o</sup></p> 
                     <%} %>
                     <p>June - August</p>

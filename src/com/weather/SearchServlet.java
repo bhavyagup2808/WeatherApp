@@ -40,21 +40,11 @@ public class SearchServlet extends HttpServlet {
             String longitude = parts[1].trim();
             weatherResponse=WeatherUpdatesClient.getParameterslatlong(latitude,longitude);
             if(weatherResponse !=null)monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
-            else
-        	{
-        		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
-        		dispatcher.forward(request,response);
-        	}
         }
         else
         {
         	weatherResponse=WeatherUpdatesClient.getParametersCity(request.getParameter("cityname"));
         	if(weatherResponse !=null) monthData=AvgWeatherUpdateClient.getParameter(weatherResponse.getName());
-        	else
-        	{
-        		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
-        		dispatcher.forward(request,response);
-        	}
         }
         if(monthData !=null) {
         	double avgtemp=0; 
@@ -79,6 +69,7 @@ public class SearchServlet extends HttpServlet {
             avgtemp/=count;
             session.setAttribute("AvgSummer",avgtemp );
         }
+        if(weatherResponse ==null)request.setAttribute("SearchError", "Please search a valid response");
 		session.setAttribute("searchResponse", weatherResponse);
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/home.jsp");
 		dispatcher.forward(request,response);
